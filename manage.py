@@ -3,6 +3,10 @@
 import os
 import sys
 
+# PyMySqlの追加
+import pymysql
+
+pymysql.install_as_MySQLdb()
 
 def main():
     """Run administrative tasks."""
