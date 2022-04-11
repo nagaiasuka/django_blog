@@ -27,3 +27,7 @@ def update(request):
 # 削除
 def delete(request):
     pass
+
+#コメント
+def comment(request):
+    return render(request, 'blog/comment.html')

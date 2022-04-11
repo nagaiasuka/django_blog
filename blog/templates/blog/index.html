@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="col-md-2 mb-2 offset-md-10 text-right">
-          <a href="create.html" class="btn btn-primary">
+          <a href="{% url 'create' %}" class="btn btn-primary">
             新規投稿
           </a>
         </div>
@@ -21,7 +21,7 @@
               内容 : 今日のセブは快晴
             </p>
             <p class="card-text">投稿者 : Seedkunさん</p>
-            <a href="show.html" class="btn btn-primary">詳細へ</a>
+            <a href="{% url 'show' %}" class="btn btn-primary">詳細へ</a>
           </div>
           <div class="card-footer text-muted border-top-0 border-bottom">
             投稿日時 : 2022年1月1日8:54

@@ -14,7 +14,7 @@
           <p class="card-text">内容：今日のセブは快晴</p>
           <p>投稿日時：2022年1月1日8:54</p>
           <p>更新日時：2022年1月3日9:27</p>
-          <a href="edit.html" class="btn btn-primary mt-3">編集する</a>
+          <a href="{% url 'edit' %}" class="btn btn-primary mt-3">編集する</a>
           <form action="#" method="post">
             <input type='submit' value='削除' class="btn btn-danger mt-3" onclick='return confirm("本当に削除しますか？");'>
           </form>
@@ -24,7 +24,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <a href="comment.html">
+      <a href="{% url 'comment'%}">
         <button type="button" class="btn btn-primary mt-3">コメントする</button>
       </a>
     </div>
