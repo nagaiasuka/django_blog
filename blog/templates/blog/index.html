@@ -16,15 +16,15 @@
             投稿一覧
           </div>
           <div class="card-body">
-            <h5 class="card-title">タイトル : おはよう</h5>
+            <h5 class="card-title">タイトル : {{ title }}</h5>
             <p class="card-text">
-              内容 : 今日のセブは快晴
+              内容 : {{ text }}
             </p>
             <p class="card-text">投稿者 : Seedkunさん</p>
             <a href="{% url 'show' %}" class="btn btn-primary">詳細へ</a>
           </div>
           <div class="card-footer text-muted border-top-0 border-bottom">
-            投稿日時 : 2022年1月1日8:54
+            投稿日時 : {{ post_date }}
           </div>
           <div class="card-body">
             <h5 class="card-title">タイトル : こんにちは</h5>

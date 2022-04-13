@@ -1,8 +1,16 @@
 from django.shortcuts import render
+import datetime as dt
 
 # 一覧表示
 def index(request):
-    return render(request, 'blog/index.html')
+    # データを渡す
+    context = {
+        'title' :'django',
+        'text' :'テストです。',
+        'post_date' : dt.datetime(2022,12,1,8,56),
+    }
+    
+    return render(request, 'blog/index.html',context)
 
 # 新規投稿
 def create(request):
