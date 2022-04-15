@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 import datetime as dt
 from blog.models import Post
 
@@ -19,7 +19,16 @@ def create(request):
 
 # 登録処理
 def store(request):
-    pass
+    # データの受け取り
+    post = Post(
+        title = request.POST.get('title'),
+        text = request.POST.get('text'),
+        user = request.user,
+    )
+    post.save()
+    # データの保存
+    # リダイレクト
+    return redirect(index)
 
 # 詳細画面
 def show(request,id):
