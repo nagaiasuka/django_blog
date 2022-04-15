@@ -8,12 +8,13 @@
     <div class="col-md-8">
       <div class="card mt-3">
         <div class="card-header">
-          <h5>タイトル：おはよう</h5>
+          <h5>タイトル：{{ post.title }}</h5>
         </div>
         <div class="card-body">
-          <p class="card-text">内容：今日のセブは快晴</p>
-          <p>投稿日時：2022年1月1日8:54</p>
-          <p>更新日時：2022年1月3日9:27</p>
+          <p class="card-text">内容：{{ post.text }}</p>
+          <p>投稿日時：{{ post.created_at }}</p>
+          <p>更新日時：{{ post.updated_at }}</p>
+          <p class="card-text">投稿者 : {{ post.user }}さん</p>
         </form>
       </div>
     </div>

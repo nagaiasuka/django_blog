@@ -33,8 +33,14 @@ def show(request,id):
     return render(request, 'blog/show.html',context)
 
 # 編集更新画面
-def edit(request):
-    return render(request, 'blog/edit.html')
+def edit(request,id):
+       # データの取り出し
+    post = get_object_or_404(Post, pk=id)
+    # データを渡す
+    context = {
+        'post': post,
+    }
+    return render(request, 'blog/edit.html',context)
 
 # 更新処理
 def update(request):
