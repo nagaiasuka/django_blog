@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 import datetime as dt
 from blog.models import Post
 
@@ -22,8 +22,15 @@ def store(request):
     pass
 
 # 詳細画面
-def show(request):
-    return render(request, 'blog/show.html')
+def show(request,id):
+      # データの取り出し
+    post = get_object_or_404(Post, pk=id)
+    # データを渡す
+    context = {
+        'post': post,
+    }
+    
+    return render(request, 'blog/show.html',context)
 
 # 編集更新画面
 def edit(request):
