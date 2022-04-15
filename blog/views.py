@@ -1,13 +1,14 @@
 from django.shortcuts import render
 import datetime as dt
+from blog.models import Post
 
 # 一覧表示
 def index(request):
+    # データの取り出し
+    posts = Post.objects.all()
     # データを渡す
     context = {
-        'title' :'django',
-        'text' :'テストです。',
-        'post_date' : dt.datetime(2022,12,1,8,56),
+        'posts': posts,
     }
     
     return render(request, 'blog/index.html',context)

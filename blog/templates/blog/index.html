@@ -15,28 +15,21 @@
           <div class="card-header">
             投稿一覧
           </div>
-          <div class="card-body">
-            <h5 class="card-title">タイトル : {{ title }}</h5>
-            <p class="card-text">
-              内容 : {{ text }}
-            </p>
-            <p class="card-text">投稿者 : Seedkunさん</p>
-            <a href="{% url 'show' %}" class="btn btn-primary">詳細へ</a>
-          </div>
-          <div class="card-footer text-muted border-top-0 border-bottom">
-            投稿日時 : {{ post_date }}
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">タイトル : こんにちは</h5>
-            <p class="card-text">
-              内容 : 今日の日本は快晴
-            </p>
-            <p class="card-text">投稿者 : Seedkunさん</p>
-            <a href="show.html" class="btn btn-primary">詳細へ</a>
-          </div>
-          <div class="card-footer text-muted border-top-0 border-bottom">
-            投稿日時 : 2022年1月5日9:32
-          </div>
+          
+          {% for post in posts %}
+            <div class="card-body">
+              <h5 class="card-title">タイトル : {{ post.title }}</h5>
+              <p class="card-text">
+                内容 : {{ post.text }}
+              </p>
+              <p class="card-text">投稿者 : {{ post.user }}さん</p>
+              <a href="{% url 'show' %}" class="btn btn-primary">詳細へ</a>
+            </div>
+            <div class="card-footer text-muted border-top-0 border-bottom">
+              投稿日時 : {{ post.updated_at }}
+            </div>
+          {% endfor %}
+
         </div>
       </div>
     </div>
