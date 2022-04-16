@@ -69,8 +69,10 @@ def update(request,id):
 
 
 # 削除
-def delete(request):
-    pass
+def delete(request,id):
+    post = Post.objects.get(pk=id)
+    post.delete()
+    return redirect(index)
 
 #コメント
 def comment(request):
