@@ -52,8 +52,21 @@ def edit(request,id):
     return render(request, 'blog/edit.html',context)
 
 # 更新処理
-def update(request):
-    pass
+def update(request,id):
+    post = Post(
+        pk = id,
+        title = request.POST.get('title'),
+        text = request.POST.get('text'),
+    )
+    post.save(
+        update_fields=[
+            'title',
+            'text',
+            'updated_at',
+        ]
+    )
+    return redirect(index)
+
 
 # 削除
 def delete(request):

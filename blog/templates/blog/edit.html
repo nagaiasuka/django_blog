@@ -18,7 +18,8 @@
         </form>
       </div>
     </div>
-    <form action="#" method="POST">
+    <form action="{% url 'update' id=post.id %}" method="POST">
+      {% csrf_token %}
       <div class="form-group mt-5">
         <label>タイトル</label>
         <input type="text" class="form-control" value="" name="title">
