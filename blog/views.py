@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 import datetime as dt
-from blog.models import Post
+from blog.models import Post,Comment
+from .forms import CommentCreateForm
 
 # 一覧表示
 def index(request):
@@ -34,9 +35,11 @@ def store(request):
 def show(request,id):
       # データの取り出し
     post = get_object_or_404(Post, pk=id)
+    comments = Comment.objects.filter(target=id)
     # データを渡す
     context = {
         'post': post,
+        'comments':comments
     }
     
     return render(request, 'blog/show.html',context)
@@ -75,5 +78,11 @@ def delete(request,id):
     return redirect(index)
 
 #コメント
-def comment(request):
-    return render(request, 'blog/comment.html')
+def comment(request,id):
+    post = get_object_or_404(Post,pk=id)
+    commentCreateForm=CommentCreateForm
+    context = {
+        'post':post,
+        'from':commentCreateForm
+    }
+    return render(request, 'blog/comment.html',context)

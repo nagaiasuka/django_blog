@@ -35,7 +35,7 @@
   {% if user.is_authenticated %}
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <a href="{% url 'comment' %}" >
+        <a href="{% url 'comment' id=post.id %}" >
           <button type="button" class="btn btn-primary mt-3">コメントする</button>
         </a>
       </div>
@@ -45,13 +45,15 @@
   <div class="row justify-content-center">
     <div class="col-md-8 mt-5">
       コメント一覧
-      <div class="card mt-3">
-        <h5 class="card-header">投稿者：Seedさん</h5>
-        <div class="card-body">
-          <h5 class="card-title">投稿日時：2021/11/08</h5>
-          <p class="card-text">内容：今日のセブは快晴</p>
+      {%for comment in comments %}
+        <div class="card mt-3">
+          <h5 class="card-header">投稿者：{{ comment.user }}</h5>
+          <div class="card-body">
+            <h5 class="card-title">投稿日時：{{ comment.created_at }}</h5>
+            <p class="card-text">内容：{{  comment.text  }}</p>
+          </div>
         </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
