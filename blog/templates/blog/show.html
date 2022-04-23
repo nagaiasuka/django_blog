@@ -19,22 +19,29 @@
           {% endif %}
 
           <p class="card-text">投稿者 : {{ post.user }}さん</p>
-          <a href="{% url 'edit' id=post.id %}" class="btn btn-primary mt-3">編集する</a>
-          <form action="{% url 'delete' id=post.id %}" method="post">
-            {% csrf_token %}
-            <input type='submit' value='削除' class="btn btn-danger mt-3" onclick='return confirm("本当に削除しますか？");'>
-          </form>
+          {% if user.is_authenticated %}
+            {% if post.user.id == request.user.id %}
+              <a href="{% url 'edit' id=post.id %}" class="btn btn-primary mt-3">編集する</a>
+              <form action="{% url 'delete' id=post.id %}" method="post">
+                {% csrf_token %}
+                <input type='submit' value='削除' class="btn btn-danger mt-3" onclick='return confirm("本当に削除しますか？");'>
+              </form>
+            {% endif %}
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <a href="{% url 'comment' %}" >
-        <button type="button" class="btn btn-primary mt-3">コメントする</button>
-      </a>
+  {% if user.is_authenticated %}
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <a href="{% url 'comment' %}" >
+          <button type="button" class="btn btn-primary mt-3">コメントする</button>
+        </a>
+      </div>
     </div>
-  </div>
+  {% endif %}
+
   <div class="row justify-content-center">
     <div class="col-md-8 mt-5">
       コメント一覧
