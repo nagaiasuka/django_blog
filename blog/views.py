@@ -80,9 +80,20 @@ def delete(request,id):
 #コメント
 def comment(request,id):
     post = get_object_or_404(Post,pk=id)
-    commentCreateForm=CommentCreateForm
+    if request.method == 'POST':
+        commentCreateForm= CommentCreateForm(request.POST)
+        if commentCreateForm.is_valid():
+            comment = commentCreateForm.save(commit=False) 
+            comment.user=request.user
+            comment.target=post
+            comment.save()
+            return redirect(show,id)
+    else:
+        commentCreateForm = CommentCreateForm()
+    
     context = {
-        'post':post,
-        'from':commentCreateForm
+        'post' : post,
+        'form' : commentCreateForm,
     }
+    
     return render(request, 'blog/comment.html',context)
